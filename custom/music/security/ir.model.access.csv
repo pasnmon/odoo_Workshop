@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_music_song,access_music_song,model_music_song,base.group_user,1,1,1,1
+access_music_album,access_music_album,model_music_album,base.group_user,1,1,1,1
+access_music_interpret,access_music_interpret,model_music_interpret,base.group_user,1,1,1,1
+access_music_genre,access_music_genre,model_music_genre,base.group_user,1,1,1,1
