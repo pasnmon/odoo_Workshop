@@ -1,0 +1,56 @@
+1:
+
+  Pakete:
+
+  apt update && apt upgrade -y
+
+  apt install -y postgresql postgresql-server-dev-9.6 python3-pip python3-venv python3-dev libxml2-dev libxslt1-dev libldap2-dev libssl-dev libsasl2-dev git wget nano
+
+  wget https://downloads.wkhtmltopdf.org/0.12/0.12.5/wkhtmltox_0.12.5-1.stretch_amd64.deb
+
+  apt install -y ./wkhtmltox_0.12.5-1.stretch_amd64.deb
+
+2:
+  Postgres:
+  
+  /etc/init.d/postgresql start
+
+  su - postgres
+
+  createuser --createdb --username postgres --no-createrole --no-superuser --pwprompt odoo12
+
+  exit
+  
+3:
+  Odoo:
+  
+  git clone https://github.com/odoo/odoo.git odoo-12
+
+  cd odoo-12
+
+  git checkout 12.0
+
+  mkdir custom
+
+  nano odoo.conf
+
+  [options]
+  db_host = 127.0.0.1
+  db_port = 5432
+  db_user = odoo12
+  db_password = odoo12
+  http_port = 8069
+
+  longpolling_port = 8072
+  addons_path = addons,custom
+  
+4:
+  Python Pakete:
+  
+  apt install -y python3-setuptools python3-wheel
+  pip3 install -r requirements.txt
+  
+  (5:)
+    ipython:
+    
+    pip3 install ipython
